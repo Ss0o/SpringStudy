@@ -1,0 +1,8 @@
+### 회원 등록
+POST http://localhost:8080/members
+Content-Type: application/json
+
+{
+  "name": "임상수",
+  "email": "sangsoo@example.com"
+}
