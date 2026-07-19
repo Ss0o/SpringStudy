@@ -1,5 +1,6 @@
 package study.springstudy.member.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import study.springstudy.member.domain.Member;
 import study.springstudy.member.dto.MemberCreateRequest;
@@ -20,7 +21,7 @@ public class MemberController {
     }
 
     @PostMapping
-    public MemberResponse createMember(@RequestBody MemberCreateRequest request) {
+    public MemberResponse createMember(@Valid @RequestBody MemberCreateRequest request) {
         Member member = memberService.register(request.getName(), request.getEmail());
 
         return toResponse(member);
@@ -43,7 +44,7 @@ public class MemberController {
     }
 
     @PutMapping("/{id}")
-    public MemberResponse updateMember(@PathVariable Long id, @RequestBody MemberUpdateRequest request) {
+    public MemberResponse updateMember(@PathVariable Long id, @Valid @RequestBody MemberUpdateRequest request) {
         Member member = memberService.updateMember(id, request.getName(), request.getEmail());
         return toResponse(member);
     }

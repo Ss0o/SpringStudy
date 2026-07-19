@@ -32,4 +32,11 @@ public class MemberRepository {
         store.remove(member.getId());
     }
 
+    public Optional<Member> findByEmail(String email) {
+        return store.values()
+                .stream()
+                .filter(member -> member.getEmail().equals(email))
+                .findFirst();
+    }
+
 }

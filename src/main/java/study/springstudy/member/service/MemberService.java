@@ -2,6 +2,8 @@ package study.springstudy.member.service;
 
 import org.springframework.stereotype.Service;
 import study.springstudy.member.domain.Member;
+import study.springstudy.member.exception.DuplicateEmailException;
+import study.springstudy.member.exception.MemberNotFoundException;
 import study.springstudy.member.repository.MemberRepository;
 
 import java.util.List;
@@ -24,13 +26,23 @@ public class MemberService {
     }
 
     public Member register(String name, String email) {
+        validateDuplicateEmail(email);
         Member member = new Member(name, email);
 
         return memberRepository.save(member);
     }
+
+    private void validateDuplicateEmail(String email) {
+        memberRepository.findByEmail(email)
+                .ifPresent(member -> {
+                    throw new DuplicateEmailException(email);
+                });
+    }
     public Member findMember(Long id) {
         return memberRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("회원을 찾을 수 없습니. id = " + id));
+                .orElseThrow(() ->
+                        new MemberNotFoundException(id)
+                );
     }
     public List<Member> findAllMembers() {
         return memberRepository.findAll();
@@ -39,9 +51,20 @@ public class MemberService {
     public Member updateMember(Long id, String name, String email) {
         Member member = findMember(id);
 
+        validateDuplicateEmailForUpdate(id, email);
+
         member.update(name, email);
 
         return member;
+    }
+
+    private void validateDuplicateEmailForUpdate(Long memberId, String email) {
+        memberRepository.findByEmail(email)
+                .ifPresent(existingMember -> {
+                    if(!existingMember.getId().equals(memberId)) {
+                        throw new DuplicateEmailException(email);
+                    }
+                });
     }
 
     public void deleteMember(Long id) {

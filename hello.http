@@ -51,3 +51,21 @@ DELETE http://localhost:8080/members/1
 
 ### 삭제된 회원 조회
 GET http://localhost:8080/members/1
+
+### 이름이 공백인 회원 등록
+POST http://localhost:8080/members
+Content-Type: application/json
+
+{
+  "name": "   ",
+  "email": "sangsoo@example.com"
+}
+
+### 같은 이메일로 중복 회원 등록
+POST http://localhost:8080/members
+Content-Type: application/json
+
+{
+  "name": "다른 사람",
+  "email": "sangsoo@example.com"
+}
