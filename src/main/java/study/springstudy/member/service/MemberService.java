@@ -45,7 +45,7 @@ public class MemberService {
     }
 
     public void deleteMember(Long id) {
-        findMember(id);
-        memberRepository.deleteById(id);
+        Member member = findMember(id); //삭제 전에 해당 회원이 실제로 존재하는지 확인하기 위해 호출 없으면 예외 발생
+        memberRepository.delete(member);
     }
 }

@@ -28,8 +28,8 @@ public class MemberRepository {
         return new ArrayList<>(store.values());
     }
 
-    public void deleteById(Long id) {
-        store.remove(id);
+    public void delete(Member member) {
+        store.remove(member.getId());
     }
 
 }
