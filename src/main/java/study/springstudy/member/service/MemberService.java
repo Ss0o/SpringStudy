@@ -35,4 +35,17 @@ public class MemberService {
     public List<Member> findAllMembers() {
         return memberRepository.findAll();
     }
+
+    public Member updateMember(Long id, String name, String email) {
+        Member member = findMember(id);
+
+        member.update(name, email);
+
+        return member;
+    }
+
+    public void deleteMember(Long id) {
+        findMember(id);
+        memberRepository.deleteById(id);
+    }
 }

@@ -24,3 +24,30 @@ GET http://localhost:8080/members
 
 ### 존재하지 않는 회원 조회
 GET http://localhost:8080/members/999
+
+### 회원 등록
+POST http://localhost:8080/members
+Content-Type: application/json
+
+{
+  "name": "임상수",
+  "email": "sangsoo@example.com"
+}
+
+### 회원 수정
+PUT http://localhost:8080/members/1
+Content-Type: application/json
+
+{
+  "name": "수정된 임상수",
+  "email": "updated@example.com"
+}
+
+### 수정된 회원 조회
+GET http://localhost:8080/members/1
+
+### 회원 삭제
+DELETE http://localhost:8080/members/1
+
+### 삭제된 회원 조회
+GET http://localhost:8080/members/1

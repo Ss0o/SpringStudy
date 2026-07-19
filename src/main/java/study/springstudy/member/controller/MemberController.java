@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import study.springstudy.member.domain.Member;
 import study.springstudy.member.dto.MemberCreateRequest;
 import study.springstudy.member.dto.MemberResponse;
+import study.springstudy.member.dto.MemberUpdateRequest;
 import study.springstudy.member.service.MemberService;
 
 import java.util.ArrayList;
@@ -40,6 +41,18 @@ public class MemberController {
         }
         return responses;
     }
+
+    @PutMapping("/{id}")
+    public MemberResponse updateMember(@PathVariable Long id, @RequestBody MemberUpdateRequest request) {
+        Member member = memberService.updateMember(id, request.getName(), request.getEmail());
+        return toResponse(member);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteMember(@PathVariable Long id) {
+        memberService.deleteMember(id);
+    }
+
 
     public MemberResponse toResponse(Member member) {
         return new MemberResponse(member.getId(), member.getName(), member.getEmail());

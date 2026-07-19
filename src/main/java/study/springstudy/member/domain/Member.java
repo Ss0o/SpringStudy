@@ -20,8 +20,12 @@ public class Member {
     public String getName() {
         return name;
     }
-
     public String getEmail() {
         return email;
+    }
+
+    public void update(String name, String email) {
+        this.name = name;
+        this.email = email;
     }
 }
