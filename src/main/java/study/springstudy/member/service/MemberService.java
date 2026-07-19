@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import study.springstudy.member.domain.Member;
 import study.springstudy.member.repository.MemberRepository;
 
+import java.util.List;
+
 @Service
 public class MemberService {
     private final MemberRepository memberRepository;
@@ -25,5 +27,12 @@ public class MemberService {
         Member member = new Member(name, email);
 
         return memberRepository.save(member);
+    }
+    public Member findMember(Long id) {
+        return memberRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("회원을 찾을 수 없습니. id = " + id));
+    }
+    public List<Member> findAllMembers() {
+        return memberRepository.findAll();
     }
 }

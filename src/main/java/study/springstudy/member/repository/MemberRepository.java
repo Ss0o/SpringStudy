@@ -3,8 +3,7 @@ package study.springstudy.member.repository;
 import org.springframework.stereotype.Repository;
 import study.springstudy.member.domain.Member;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class MemberRepository {
@@ -20,4 +19,13 @@ public class MemberRepository {
 
         return member;
     }
+
+    public Optional<Member> findById(Long id) {
+        // 존재하지 않는 키를 조회하면 null
+        return Optional.ofNullable(store.get(id));
+    }
+    public List<Member> findAll() {
+        return new ArrayList<>(store.values());
+    }
+
 }

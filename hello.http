@@ -1,4 +1,4 @@
-### 회원 등록
+### 첫번째 회원 등록
 POST http://localhost:8080/members
 Content-Type: application/json
 
@@ -6,3 +6,21 @@ Content-Type: application/json
   "name": "임상수",
   "email": "sangsoo@example.com"
 }
+
+### 두번째 회원 등록
+POST http://localhost:8080/members
+Content-Type: application/json
+
+{
+  "name": "홍길동",
+  "email": "hong@example.com"
+}
+
+### 1번 회원 조회
+GET http://localhost:8080/members/1
+
+### 전체 회원 조회
+GET http://localhost:8080/members
+
+### 존재하지 않는 회원 조회
+GET http://localhost:8080/members/999
