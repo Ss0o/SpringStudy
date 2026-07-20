@@ -69,3 +69,7 @@ Content-Type: application/json
   "name": "다른 사람",
   "email": "sangsoo@example.com"
 }
+
+
+###
+GET http://localhost:8080/beans/check

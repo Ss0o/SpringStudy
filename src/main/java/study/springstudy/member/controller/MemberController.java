@@ -11,6 +11,15 @@ import study.springstudy.member.service.MemberService;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+    @Component
+    ├── @Controller
+    │   └── @RestController
+    ├── @Service
+    ├── @Repository
+    └── @ControllerAdvice
+        └── @RestControllerAdvice
+ */
 @RestController
 @RequestMapping("/members")
 public class MemberController {
