@@ -73,3 +73,14 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8080/beans/check
+
+### 서블릿 GET 요청
+GET http://localhost:8080/servlet/hello?name=임상수
+
+### 서블릿 POST 요청
+POST http://localhost:8080/servlet/hello
+Content-Type: application/json
+
+{
+  "name": "임상수"
+}
