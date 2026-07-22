@@ -84,3 +84,36 @@ Content-Type: application/json
 {
   "name": "임상수"
 }
+
+### 정상 회원 ID 변환
+GET http://localhost:8080/conversion/members/member-10
+
+### 단일 파일 업로드
+POST http://localhost:8080/files
+Content-Type: multipart/form-data; boundary=FileBoundary
+
+--FileBoundary
+Content-Disposition: form-data; name="file"; filename="sample.txt"
+Content-Type: text/plain
+
+< ./sample.txt
+--FileBoundary--
+
+### JSON과 파일 함께 업로드
+POST http://localhost:8080/files/with-data
+Content-Type: multipart/form-data; boundary=UploadBoundary
+
+--UploadBoundary
+Content-Disposition: form-data; name="data"
+Content-Type: application/json
+
+{
+  "title": "Spring 파일 업로드",
+  "description": "JSON과 파일을 함께 전송합니다."
+}
+--UploadBoundary
+Content-Disposition: form-data; name="file"; filename="sample.txt"
+Content-Type: text/plain
+
+< ./sample.txt
+--UploadBoundary--

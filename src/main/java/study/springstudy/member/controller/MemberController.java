@@ -12,6 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
+    Spring 애플리케이션은
+    Controller·Service·Repository로 책임을 나눌 수 있다.
+
+    각 계층에는 여러 Bean 클래스가 존재할 수 있다.
+
+    Spring Bean은 기본적으로
+    클래스별로 하나의 객체가 생성되어 공유된다.
+ */
+
+/*
     @Component
     ├── @Controller
     │   └── @RestController
