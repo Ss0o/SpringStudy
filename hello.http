@@ -117,3 +117,24 @@ Content-Type: text/plain
 
 < ./sample.txt
 --UploadBoundary--
+
+### 템플릿 메서드 패턴
+GET http://localhost:8080/patterns/template
+
+### 전략 패턴
+GET http://localhost:8080/patterns/strategy
+
+### 회원 저장 전략
+GET http://localhost:8080/patterns/strategy/save
+
+### 템플릿 콜백 패턴
+GET http://localhost:8080/patterns/callback
+
+### 템플릿 콜백 저장 패턴
+GET http://localhost:8080/patterns/callback/save
+
+### 프록시 패턴
+GET http://localhost:8080/patterns/proxy
+
+### 데코레이터 패턴
+GET http://localhost:8080/patterns/decorator
